@@ -205,21 +205,8 @@ public class Agas {
 				
 				this.profit -= (this.bsBetValue + this.eoBetValue);
 				
-				if(this.bsBetOption.equalsIgnoreCase(BIG)) {
-					this.bigLevel--;
-				}
-				
-				if(this.bsBetOption.equalsIgnoreCase(SMALL)) {
-					this.smallLevel--;
-				}
-				
-				if(this.eoBetOption.equalsIgnoreCase(EVEN)) {
-					this.evenLevel--;
-				}
-				
-				if(this.eoBetOption.equalsIgnoreCase(ODD)) {
-					this.oddLevel--;
-				}
+				this.bsLevel++;
+				this.eoLevel++;
 				
 			} else {
 				
@@ -232,11 +219,6 @@ public class Agas {
 				}
 				
 				if(this.entryOption.equalsIgnoreCase("EO")) {
-					this.updateEO();
-				}
-				
-				if(this.entryOption.equalsIgnoreCase("DUAL")) {
-					this.updateBS();
 					this.updateEO();
 				}
 			}
@@ -313,7 +295,6 @@ public class Agas {
 		if(this.entryOption.equalsIgnoreCase(EO)) {
 			this.setupEoBet();
 		}
-		
 	}
 	
 	private void setupBsBet() {
@@ -327,7 +308,7 @@ public class Agas {
 		}
 		
 		if(this.profit < 0) {
-			this.bsBetValue = -this.profit + this.baseBet;
+			this.bsBetValue = this.baseBet + (-this.profit);
 		}else {
 			this.bsBetValue = this.baseBet;
 		}
@@ -344,7 +325,7 @@ public class Agas {
 		}
 		
 		if(this.profit < 0 && !this.isResultTriple) {
-			this.bsBetValue = -this.profit + this.baseBet ;
+			this.bsBetValue = this.baseBet + (-this.profit);
 		} else {
 			this.eoBetValue = this.baseBet;
 		}
@@ -365,13 +346,6 @@ public class Agas {
 				this.bet(this.eoBetOption, this.eoBetValue);
 			}
 		}
-		
-		if(this.entryOption.equalsIgnoreCase(DUAL)) {
-			if(!this.bsBetOption.equals("triple-no-bet") || !this.eoBetOption.equals("triple-no-bet") ) {
-				this.bet(this.bsBetOption, this.bsBetValue);
-				this.bet(this.eoBetOption, this.eoBetValue);
-			}
-		}
 	}
 	
 	private void bet(String option, int value) {
@@ -380,7 +354,6 @@ public class Agas {
 		int optionY = -1;
 		
 		if(option.equalsIgnoreCase(BIG)) {
-			
 			optionX = this.table.getBigX();
 			optionY = this.table.getBigY();
 		}
