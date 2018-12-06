@@ -205,8 +205,11 @@ public class Agas {
 				
 				this.profit -= (this.bsBetValue + this.eoBetValue);
 				
-				this.bsLevel++;
-				this.eoLevel++;
+				if(this.entryOption.equalsIgnoreCase(BS)) {
+					this.bsLevel++;
+				} else {
+					this.eoLevel++;
+				}
 				
 			} else {
 				
@@ -216,9 +219,7 @@ public class Agas {
 				
 				if(this.entryOption.equalsIgnoreCase(BS)) {
 					this.updateBS();
-				}
-				
-				if(this.entryOption.equalsIgnoreCase("EO")) {
+				} else {
 					this.updateEO();
 				}
 			}
@@ -290,9 +291,7 @@ public class Agas {
 		
 		if(this.entryOption.equalsIgnoreCase(BS)) {
 			this.setupBsBet();
-		}
-		
-		if(this.entryOption.equalsIgnoreCase(EO)) {
+		} else {
 			this.setupEoBet();
 		}
 	}
@@ -339,9 +338,7 @@ public class Agas {
 			if(!this.bsBetOption.equals("triple-no-bet")) {
 				this.bet(this.bsBetOption, this.bsBetValue);
 			}
-		}
-		
-		if(this.entryOption.equalsIgnoreCase(EO)) {
+		} else {
 			if(!this.eoBetOption.equals("triple-no-bet")) {
 				this.bet(this.eoBetOption, this.eoBetValue);
 			}
@@ -1323,7 +1320,6 @@ public class Agas {
 			ex.printStackTrace();
 		}
 	}
-
 	
 	@Override
 	public String toString() {
