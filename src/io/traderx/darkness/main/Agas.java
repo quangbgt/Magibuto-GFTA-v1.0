@@ -324,7 +324,7 @@ public class Agas {
 		}
 		
 		if(this.profit < 0 && !this.isResultTriple) {
-			this.bsBetValue = this.baseBet + (-this.profit);
+			this.eoBetValue = this.baseBet + (-this.profit);
 		} else {
 			this.eoBetValue = this.baseBet;
 		}
