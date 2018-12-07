@@ -299,34 +299,42 @@ public class Agas {
 	private void setupBsBet() {
 		
 		if(this.resultSum >= 11 && !this.isResultTriple) {
+			if(this.profit < 0) {
+				this.bsBetValue = -(this.profit) + this.baseBet;
+			}else {
+				this.bsBetValue = this.baseBet;
+			}
 			this.bsBetOption = SMALL;
 		} 
 		
 		if(this.resultSum <= 10 && !this.isResultTriple) {
+			if(this.profit < 0) {
+				this.bsBetValue = -(this.profit) + this.baseBet;
+			}else {
+				this.bsBetValue = this.baseBet;
+			}
 			this.bsBetOption = BIG;
-		}
-		
-		if(this.profit < 0) {
-			this.bsBetValue = this.baseBet + (-this.profit);
-		}else {
-			this.bsBetValue = this.baseBet;
 		}
 	}
 	
 	private void setupEoBet() {
 		
 		if(this.resultSum % 2 == 0 && !this.isResultTriple) {
+			if(this.profit < 0) {
+				this.eoBetValue = -(this.profit) + this.baseBet;
+			} else {
+				this.eoBetValue = this.baseBet;
+			}
 			this.eoBetOption = ODD;
 		} 
 		
 		if(this.resultSum % 2 != 0 && !this.isResultTriple) {
+			if(this.profit < 0) {
+				this.eoBetValue = -(this.profit) + this.baseBet;
+			} else {
+				this.eoBetValue = this.baseBet;
+			}
 			this.eoBetOption = EVEN;
-		}
-		
-		if(this.profit < 0 && !this.isResultTriple) {
-			this.eoBetValue = this.baseBet + (-this.profit);
-		} else {
-			this.eoBetValue = this.baseBet;
 		}
 	}
 	
